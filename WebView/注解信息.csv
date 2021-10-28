@@ -1,0 +1,8 @@
+注解                      |           用法 : 见 controller
+@PathVariable|路径变量,可用于参数传递,地址栏中的变量.
+@RequestHeader|请求头信息.
+@RequestParam|请求参数.
+@CookieValue|Cookie信息
+@RequestBody|请求体信息,只有post请求方式才携带有请求体
+@RequestAttribute|可获取请求对象中属性值
+@MatrixVariable|矩阵变量(默认禁用),可在路径中携带参数.而不是在请求参数中携带

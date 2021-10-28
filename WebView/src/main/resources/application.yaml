@@ -1,0 +1,16 @@
+
+#spring:
+  #静态资源访问前缀
+  #mvc:
+  #  static-path-pattern: /res/**
+  #修改静态资源存取路径
+  #web:
+  #  resources:
+  #    static-locations:
+  #      - classpath:
+
+#开启请求参数内容协商器(即支持在请求参数中携带内容类型,如: xxx/xxx?format=xml : 浏览器接收xml类型数据)
+spring:
+  mvc:
+    contentnegotiation:
+      favor-parameter: true
