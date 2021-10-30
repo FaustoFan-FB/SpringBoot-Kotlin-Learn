@@ -1,13 +1,16 @@
 package com.fausto.fan.app.controller
 
+import com.fausto.fan.app.entity.City
 import com.fausto.fan.app.entity.User
 import com.fausto.fan.app.log.Slf4j
 import com.fausto.fan.app.log.Slf4j.Companion.log
+import com.fausto.fan.app.service.CityService
 import com.fausto.fan.app.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 
@@ -25,6 +28,21 @@ class SqlController {
 
     @Autowired
     lateinit var userService: UserService
+
+    @Autowired
+    lateinit var cityService: CityService
+
+    @ResponseBody
+    @GetMapping("/city")
+    fun getCityById(@RequestParam id: String): City{
+        return cityService.getById(id.toLong())
+    }
+
+    @ResponseBody
+    @PostMapping("/city/insert")
+    fun saveCity(city: City){
+        cityService.saveCity(city)
+    }
 
     @ResponseBody
     @GetMapping("/user")

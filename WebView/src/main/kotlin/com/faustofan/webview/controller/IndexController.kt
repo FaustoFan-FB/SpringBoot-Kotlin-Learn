@@ -22,7 +22,7 @@ class IndexController {
     @PostMapping("/login")
     fun index(user: User, session: HttpSession, model: Model): String{
         //登陆验证
-        if (user.userName.isNotBlank() && ("123456".toInt() == user.password)){
+        if (user.userName!!.isNotBlank() && ("123456".toInt() == user.password)){
             session.setAttribute("loginUser" , user)
         }else{
             model.addAttribute("msg","账号或密码错误")

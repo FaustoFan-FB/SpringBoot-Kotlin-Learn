@@ -33,7 +33,10 @@ spring:
           config:
             drop-table-allow: false
 
-#===mybatis配置============================================================
+#===mybatis配置=================================================================
 mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml
-  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml          #映射文件位置
+  #config-location: classpath:mybatis/mybatisConfig.xml     #配置文件位置 , 若在spring配置文件修改mybatis配置
+                                                            #则mybatis全局配置文件应关闭
+  configuration:                                            #替代mybatis全局配置文件
+    map-underscore-to-camel-case: true                      #开启下划线转驼峰命名
