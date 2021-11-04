@@ -22,6 +22,8 @@ repositories {
 }
 
 dependencies {
+    implementation("de.codecentric:spring-boot-admin-starter-client:2.5.3")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:2.5.5")
     implementation("org.springframework.boot:spring-boot-starter-data-redis:2.5.6")
     runtimeOnly("mysql:mysql-connector-java:8.0.25")
     implementation("com.baomidou:mybatis-plus-boot-starter:3.4.3.4")

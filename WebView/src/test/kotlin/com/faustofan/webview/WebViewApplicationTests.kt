@@ -3,6 +3,8 @@ package com.faustofan.webview
 import com.faustofan.webview.log.Slf4j
 import com.faustofan.webview.log.Slf4j.Companion.log
 import com.faustofan.webview.mapper.UserMapper
+import com.faustofan.webview.service.UserService
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -38,6 +40,19 @@ class WebViewApplicationTests {
 
             log.info("\n+++++++++++++++++++++++++++"+
                     "\n+---Redis查询---结果: ${this.get("Hello")}" +
+                    "\n+++++++++++++++++++++++++++")
+        }
+    }
+
+
+    @Autowired
+    lateinit var userService: UserService
+    @Test
+    @DisplayName("serviceTest")
+    fun testService(){
+        userService.getById(1L).apply {
+            log.info("\n+++++++++++++++++++++++++++"+
+                    "\n+---Service查询---结果: ${this.toString()}" +
                     "\n+++++++++++++++++++++++++++")
         }
     }

@@ -15,7 +15,19 @@ spring:
     contentnegotiation:
       favor-parameter: true
 
-#redis数据缓存
+  #指标监控图形化服务器地址
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888
+        instance:
+          prefer-ip: true     #使用IP注册
+  # 项目名
+  application:
+    name: WebView
+
+
+  #redis数据缓存
   redis:
     url: redis://localhost:6379
     #redis客户端类型默认为lettuce(另一个是jedis)
@@ -25,7 +37,6 @@ spring:
     #  pool:
     #    max-active: 8
     #    min-idle: 5
-
 
 
   #数据源配置
@@ -62,8 +73,40 @@ spring:
             drop-table-allow: false
 
 
+
 #Mybatis相关配置
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml          #映射文件位置
   configuration:                                            #替代mybatis全局配置文件
     map-underscore-to-camel-case: true                      #开启下划线转驼峰命名
+
+
+#management 是所有 Actuator 的配置
+management:
+  #配置所有端点
+  endpoints:
+    enabled-by-default: true #默认开启所有监控端点
+    web:
+      exposure:
+        include: '*' #以web方式暴露所有端点
+  #配置单个端点
+  endpoint:
+    #开启health端点
+    health:
+      enabled: true
+      show-details: always #开启health端点的详细信息显示
+    #开启info端点
+    info:
+      enabled: true
+    #开启beans端点
+    beans:
+      enabled: true
+    #开启指标端点
+    metrics:
+      enabled: true
+
+
+#自定义Info信息,可从指标信息中获取: /actuator/info
+info:
+  appName: Fausto_Web
+  appVersion: 1.0.0
